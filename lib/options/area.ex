@@ -2,11 +2,12 @@ defmodule JaqTreino.Options.Area do
   def calculate_area() do
     base = get_base()
     height = get_height()
-    base * height / 2
+    area = base * height / 2
+    IO.puts("A área do triânuo é de: #{area}")
   end
 
   defp get_base() do
-    IO.gets("Entre com a base do triângulo: ")
+    IO.gets("\nEntre com a base do triângulo: ")
     |> String.replace("\n", "")
     |> String.to_integer()
   end
