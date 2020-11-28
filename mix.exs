@@ -1,4 +1,4 @@
-defmodule JaqTreino.MixProject do
+defmodule Menu.MixProject do
   use Mix.Project
 
   def project do
