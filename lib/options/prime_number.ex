@@ -1,10 +1,10 @@
 defmodule Menu.Options.PrimeNumber do
-  @initial_count 0
   @initial_factors 0
+  @initial_count 1
 
   def get_prime_number do
     get_number()
-    |> verify_number(@initial_count, @initial_factors)
+    |> verify_number(@initial_factors, @initial_count)
   end
 
   defp get_number do
@@ -13,8 +13,8 @@ defmodule Menu.Options.PrimeNumber do
     |> String.to_integer()
   end
 
-  defp verify_number(number, factors, count) when factors < 2 and count < number + 1 do
-    case rem(count, number) do
+  defp verify_number(number, factors, count) when factors <= 2 and count <= number do
+    case rem(number, count) do
       0 ->
         verify_number(number, factors + 1, count + 1)
 
@@ -23,6 +23,6 @@ defmodule Menu.Options.PrimeNumber do
     end
   end
 
-  defp verify_number(number, 2, _count), do: IO.puts("#{number} é primo.")
+  defp verify_number(number, factors, _count) when factors == 2, do: IO.puts("#{number} é primo.")
   defp verify_number(number, _factors, _count), do: IO.puts("#{number} não é primo.")
 end
