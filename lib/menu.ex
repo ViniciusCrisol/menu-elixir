@@ -1,5 +1,5 @@
 defmodule Menu do
-  alias Menu.Options.{CalculateArea, SumOddNumbers}
+  alias Menu.Options.{CalculateArea, SumOddNumbers, PrimeNumber}
 
   def open do
     get_menu_option()
@@ -21,7 +21,7 @@ defmodule Menu do
 
   defp switch_option(option) when option == 1, do: run_calculate_area_and_restart()
   defp switch_option(option) when option == 2, do: run_sum_odd_numbers_and_restart()
-  defp switch_option(option) when option == 3, do: run_calculate_area_and_restart()
+  defp switch_option(option) when option == 3, do: run_is_prime_number_and_restart()
   defp switch_option(_), do: IO.puts("\nProcesso encerrado.")
 
   defp run_calculate_area_and_restart do
@@ -31,6 +31,11 @@ defmodule Menu do
 
   defp run_sum_odd_numbers_and_restart do
     SumOddNumbers.sum_odd_numbers()
+    open()
+  end
+
+  defp run_is_prime_number_and_restart do
+    PrimeNumber.get_prime_number()
     open()
   end
 end
